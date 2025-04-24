@@ -1,9 +1,9 @@
 <script setup lang="ts">
-// import HelloWorld from './components/HelloWorld.vue'
-import ExpressDemo from './components/ExpressDemo.vue';
+// import ExpressDemo from './components/ExpressDemo.vue';
+import Login from './components/auth/Login.vue';
 </script>
 
 <template>
-  <!-- <HelloWorld msg="Vite + Vue" /> -->
-  <ExpressDemo />
+  <!-- <ExpressDemo /> -->
+  <Login/>
 </template>
