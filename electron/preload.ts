@@ -1,3 +1,4 @@
+// "use strict"
 import { ipcRenderer, contextBridge, IpcRendererEvent } from 'electron'
 // Define the API interface
 interface ElectronAPI {

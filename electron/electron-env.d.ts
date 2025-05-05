@@ -30,3 +30,4 @@ interface ElectronAPI {
   receiveMessage: (channel: string, func: (...args: any[]) => void) => void
 }
 
+declare module '*'

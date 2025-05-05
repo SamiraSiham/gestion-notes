@@ -5,7 +5,7 @@
 <template>
   <!-- component -->
   <div
-    class="w-screen relative h-[100vh] bg-[url('../../../public/bg.jpg')] bg-cover bg-center bg-no-repeat flex items-center"
+    class="w-screen relative h-[100vh] bg-[url('../../../bg.jpg')] bg-cover bg-center bg-no-repeat flex items-center"
   >
     <!-- <h1 class="text-white">Test</h1> -->
     <div

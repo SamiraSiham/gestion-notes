@@ -1,44 +1,43 @@
 import express, { type Request, type Response } from "express"
 import type { Server } from "http"
 import  cors from 'cors'
-interface ApiData {
-  message: string
-  timestamp: string
-}
+import { testConnection } from "./config/database.ts"
+import authRoutes from "./routes/auth.routes.js"
+// import coursRoutes from "./routes/cours.routes.js"
+// import eleveRoutes from "./routes/eleve.routes.js"
+// import evaluationRoutes from "./routes/evaluation.routes.js"
+// import activiteRoutes from "./routes/activite.routes.js"
+// import noteRoutes from "./routes/note.routes.js"
+// import soutienRoutes from "./routes/soutien.routes.js"
+// import statistiquesRoutes from "./routes/statistiques.routes.js"
+// import { authenticateJWT } from "./middleware/auth.middleware.js"
 
-interface SubmitResponse {
-  success: boolean
-  receivedData: any
-}
 const app = express()
 const PORT = 3002
 app.use(cors())
 app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
 
-// Define a basic route
-app.get('/api/data', (_req: Request, res: Response) => {
-  // console.log(req.body);
-  const data: ApiData = { 
-    message: 'Data from Express server', 
-    timestamp: new Date().toISOString() 
-  }
-  res.json(data)
-})
 
-app.post('/api/submit', (req: Request, res: Response) => {
-  const data = req.body
-  console.log('Received data:', data)
-  
-  const response: SubmitResponse = { 
-    success: true, 
-    receivedData: data 
-  }
-  res.json(response)
+// Routes
+app.use("/api/auth", authRoutes)
+// app.use("/api/cours", authenticateJWT, coursRoutes)
+// app.use("/api/eleves", authenticateJWT, eleveRoutes)
+// app.use("/api/evaluations", authenticateJWT, evaluationRoutes)
+// app.use("/api/activites", authenticateJWT, activiteRoutes)
+// app.use("/api/notes", authenticateJWT, noteRoutes)
+// app.use("/api/soutien", authenticateJWT, soutienRoutes)
+// app.use("/api/statistiques", authenticateJWT, statistiquesRoutes)
+
+// Route de test
+app.get("/", (_req: Request, res: Response) => {
+  res.json({ message: "API de gestion des notes des professeurs" })
 })
 
 let server: Server | null = null
 
 export function startServer(): Server {
+  testConnection();
   server = app.listen(PORT, () => {
     console.log(`Express server is running on port ${PORT}`)
   })

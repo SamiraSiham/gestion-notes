@@ -7,7 +7,6 @@
     "skipLibCheck": true,
     "importHelpers": true,
     "esModuleInterop": true,
-    // "allowSyntheticDefaultImports": true,
     "sourceMap": true,
     "baseUrl": ".",
     "paths": {
